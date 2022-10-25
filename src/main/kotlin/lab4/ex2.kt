@@ -30,16 +30,12 @@ class Student(private val name: String, private val university: String = "pk") {
 }
 
 open class Person(name: String) {
-    var name: String
-
-    init {
-        this.name = name.capitalize()
-    }
+    val name: String = name
+        get() = field.capitalize()
 }
 
 class StudentPerson(name: String, private var university: String) : Person(name) {
     val showStudent: () -> Unit = {
-        val localName = super.name
-        println("$localName studies at $university\n")
+        println("${this.name} studies at ${this.university}\n")
     }
 }
